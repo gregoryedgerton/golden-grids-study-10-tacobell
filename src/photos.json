@@ -1,0 +1,67 @@
+{
+ "crunchy": {
+  "credit": "Davidgeonetta",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_platter_with_beans_and_rice.jpg"
+ },
+ "soft": {
+  "credit": "ProtoplasmaKid",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tacos_en_Asadero_Acatl%C3%A1n_de_Ju%C3%A1rez_08.jpg"
+ },
+ "burrito": {
+  "credit": "RightCowLeftCoast",
+  "licence": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Oaxacalifornia_Burrito_cross_section.jpg"
+ },
+ "quesadilla": {
+  "credit": "pelican from Tokyo, Japan",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Quesadilla_plate,_New_Orleans_November_2016.jpg"
+ },
+ "nachos": {
+  "credit": "Andy Li",
+  "licence": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:NACHOS_-_Montagues_Tex_Mex_2026-06-03.jpg"
+ },
+ "bowl": {
+  "credit": "Missvain",
+  "licence": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Burrito_Bowl_-_La_Casa_Restaurant_-_Sarah_Stierch_-_2021-09-29.jpg"
+ },
+ "salad": {
+  "credit": "Missvain",
+  "licence": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:La_Casa_Restaurant_-_August_2022_-_Sarah_Stierch_03.jpg"
+ },
+ "breakfast": {
+  "credit": "Andy Li",
+  "licence": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Breakfast_Burrito_-_1UP_Cafe_2024-02-18.jpg"
+ },
+ "chips": {
+  "credit": "Missvain",
+  "licence": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chips_and_salsa_at_La_Casa_Restaurant_-_July_2022_-_Sarah_Stierch_02.jpg"
+ },
+ "horchata": {
+  "credit": "Sharon Hahn Darlin",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Horchata,_my_drink_of_choice_in_Mexico_-_Merida_Yucatan_21_March_2021.jpg"
+ },
+ "soda": {
+  "credit": "Renee Comet (Photographer)",
+  "licence": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Soda.jpg"
+ },
+ "twists": {
+  "credit": "Dvortygirl",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cinnamon_twist.jpg"
+ },
+ "churros": {
+  "credit": "Andy Li",
+  "licence": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Churros_bought_from_food_truck_at_Churchill_Square_2023-07-28.jpg"
+ }
+}
