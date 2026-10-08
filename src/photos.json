@@ -2,66 +2,315 @@
  "crunchy": {
   "credit": "Davidgeonetta",
   "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Taco_platter_with_beans_and_rice.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_platter_with_beans_and_rice.jpg",
+  "exact": false
  },
  "soft": {
   "credit": "ProtoplasmaKid",
   "licence": "CC BY-SA 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Tacos_en_Asadero_Acatl%C3%A1n_de_Ju%C3%A1rez_08.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Tacos_en_Asadero_Acatl%C3%A1n_de_Ju%C3%A1rez_08.jpg",
+  "exact": false
  },
  "burrito": {
   "credit": "RightCowLeftCoast",
   "licence": "CC BY 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Oaxacalifornia_Burrito_cross_section.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Oaxacalifornia_Burrito_cross_section.jpg",
+  "exact": false
  },
  "quesadilla": {
   "credit": "pelican from Tokyo, Japan",
   "licence": "CC BY-SA 2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Quesadilla_plate,_New_Orleans_November_2016.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Quesadilla_plate,_New_Orleans_November_2016.jpg",
+  "exact": false
  },
  "nachos": {
   "credit": "Andy Li",
   "licence": "CC0",
-  "page": "https://commons.wikimedia.org/wiki/File:NACHOS_-_Montagues_Tex_Mex_2026-06-03.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:NACHOS_-_Montagues_Tex_Mex_2026-06-03.jpg",
+  "exact": false
  },
  "bowl": {
   "credit": "Missvain",
   "licence": "CC BY 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Burrito_Bowl_-_La_Casa_Restaurant_-_Sarah_Stierch_-_2021-09-29.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Burrito_Bowl_-_La_Casa_Restaurant_-_Sarah_Stierch_-_2021-09-29.jpg",
+  "exact": false
  },
  "salad": {
   "credit": "Missvain",
   "licence": "CC BY 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:La_Casa_Restaurant_-_August_2022_-_Sarah_Stierch_03.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:La_Casa_Restaurant_-_August_2022_-_Sarah_Stierch_03.jpg",
+  "exact": false
  },
  "breakfast": {
   "credit": "Andy Li",
   "licence": "CC0",
-  "page": "https://commons.wikimedia.org/wiki/File:Breakfast_Burrito_-_1UP_Cafe_2024-02-18.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Breakfast_Burrito_-_1UP_Cafe_2024-02-18.jpg",
+  "exact": false
  },
  "chips": {
   "credit": "Missvain",
   "licence": "CC BY 4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Chips_and_salsa_at_La_Casa_Restaurant_-_July_2022_-_Sarah_Stierch_02.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Chips_and_salsa_at_La_Casa_Restaurant_-_July_2022_-_Sarah_Stierch_02.jpg",
+  "exact": false
  },
  "horchata": {
   "credit": "Sharon Hahn Darlin",
   "licence": "CC BY 2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Horchata,_my_drink_of_choice_in_Mexico_-_Merida_Yucatan_21_March_2021.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Horchata,_my_drink_of_choice_in_Mexico_-_Merida_Yucatan_21_March_2021.jpg",
+  "exact": false
  },
  "soda": {
   "credit": "Renee Comet (Photographer)",
   "licence": "Public domain",
-  "page": "https://commons.wikimedia.org/wiki/File:Soda.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Soda.jpg",
+  "exact": false
  },
  "twists": {
   "credit": "Dvortygirl",
   "licence": "CC BY-SA 3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Cinnamon_twist.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Cinnamon_twist.jpg",
+  "exact": false
  },
  "churros": {
   "credit": "Andy Li",
   "licence": "CC0",
-  "page": "https://commons.wikimedia.org/wiki/File:Churros_bought_from_food_truck_at_Churchill_Square_2023-07-28.jpg"
+  "page": "https://commons.wikimedia.org/wiki/File:Churros_bought_from_food_truck_at_Churchill_Square_2023-07-28.jpg",
+  "exact": false
+ },
+ "crunchwrap": {
+  "credit": "JIP",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Crunchwrap_Supreme.jpg",
+  "exact": true,
+  "shows": "Crunchwrap Supreme"
+ },
+ "chalupa-supreme": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Chalupa_Supreme_(54363913328).jpg",
+  "exact": true,
+  "shows": "Chalupa Supreme"
+ },
+ "mexican-pizza": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mexican_Pizza_Taco_Bell_(54385500737).jpg",
+  "exact": true,
+  "shows": "Mexican Pizza"
+ },
+ "nachos-bellgrande": {
+  "credit": "Willis Lam",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Nachos_BellGrande_(45756738371).jpg",
+  "exact": true,
+  "shows": "Nachos BellGrande"
+ },
+ "doritos-locos": {
+  "credit": "1000b",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:TACO_BELL_Doritos_LOCOS_TACOS.jpg",
+  "exact": true,
+  "shows": "Doritos Locos Tacos"
+ },
+ "cheese-quesadilla": {
+  "credit": "Famartin",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2019-01-22_21_01_02_A_cheese_quesadilla_from_Taco_Bell_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+  "exact": true,
+  "shows": "Cheese Quesadilla"
+ },
+ "burrito-meal": {
+  "credit": "Nahushraj Sonawane",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_and_Burrito_Taco_Bell_Meal_(48686456993).jpg"
+ },
+ "baja-blast": {
+  "credit": "Thanksolotl",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Baja_Blast.jpg",
+  "exact": true,
+  "shows": "MTN DEW Baja Blast"
+ },
+ "cantina-soft-taco": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Caliente_Cantina_Chicken_Soft_TacoBell_(54355197580).jpg",
+  "exact": true,
+  "shows": "Cantina Chicken Soft Taco (Caliente)"
+ },
+ "crunchy-taco-supreme": {
+  "credit": "Famartin",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2020-04-28_21_18_41_A_Crunchy_Taco_Supreme_from_Taco_Bell_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+  "exact": true,
+  "shows": "Crunchy Taco Supreme"
+ },
+ "nuggets": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:New_Chicken_Nuggets_at_Taco_Bell_(54214782433).jpg",
+  "exact": true,
+  "shows": "Crispy Chicken Nuggets"
+ },
+ "crunchy-taco": {
+  "credit": "Willis Lam",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Crunchy_Taco_(36790432774).jpg",
+  "exact": true,
+  "shows": "Crunchy Taco"
+ },
+ "chalupa": {
+  "credit": "3steph14",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chalupa_taco_bell.jpg",
+  "exact": true,
+  "shows": "Chalupa"
+ },
+ "box": {
+  "credit": "JIP",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Box_for_1.jpg",
+  "exact": true,
+  "shows": "A Taco Bell box meal"
+ },
+ "soft-taco": {
+  "credit": "Lenin and McCarthy",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tbellsoft1.JPG",
+  "exact": true,
+  "shows": "Soft Tacos"
+ },
+ "street-chalupa": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Street_Chalupa_Taco_Bell_(54413761183).jpg",
+  "exact": true,
+  "shows": "Street Chalupa"
+ },
+ "crispy-chicken-pizza": {
+  "credit": "Dan Keck",
+  "licence": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Mexican_Crispy_Chicken_Pizza_01.jpg",
+  "exact": true,
+  "shows": "Mexican Crispy Chicken Pizza"
+ },
+ "beefy-fritos-burrito": {
+  "credit": "Willis Lam",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Beefy_Fritos_Burrito_(15401861800).jpg",
+  "exact": true,
+  "shows": "Beefy Fritos Burrito"
+ },
+ "triple-melt": {
+  "credit": "Willis Lam",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Triple_Melt_Burrito_(39453160090).jpg",
+  "exact": true,
+  "shows": "Triple Melt Burrito"
+ },
+ "doritos-nacho": {
+  "credit": "Willis Lam",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Doritos_Locos_Nacho_Cheese_Taco_(21958719361).jpg",
+  "exact": true,
+  "shows": "Nacho Cheese Doritos Locos Taco"
+ },
+ "quesadilla-combo": {
+  "credit": "BrokenSphere",
+  "licence": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_quesadilla_%26_beef_taco_combo_meal_crop.jpg",
+  "exact": true,
+  "shows": "Quesadilla and taco combo"
+ },
+ "cheesy-street-chalupas": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cheesy_Street_Chalupas_Taco_Bell_(54722668243).jpg",
+  "exact": true,
+  "shows": "Cheesy Street Chalupas"
+ },
+ "cinnabon": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cinnabon_Delights_Taco_Bell_(53780070329).jpg",
+  "exact": true,
+  "shows": "Cinnabon Delights"
+ },
+ "menu-items": {
+  "credit": "Mudwater",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco-Bell-menu-items-01.jpg",
+  "exact": true,
+  "shows": "Chalupa Supreme, Burrito Supreme and others"
+ },
+ "dollar-cravings": {
+  "credit": "Wen Baldron",
+  "licence": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dollar_Cravings.jpg",
+  "exact": true,
+  "shows": "Dollar Cravings value items"
+ },
+ "gordita-crunch": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Miami_(55535850419).jpg",
+  "exact": true,
+  "shows": "Cheesy Gordita Crunch"
+ },
+ "fritos-slider": {
+  "credit": "Willis Lam",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Bell_Fritos_Beefy_Cheddar_Crunch_Wrap_Slider_Opened_(17659155604).jpg",
+  "exact": true,
+  "shows": "Fritos Beefy Cheddar Crunchwrap Slider"
+ },
+ "cantina-bowl": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://www.flickr.com/photos/25955895@N03/54432484244",
+  "exact": true,
+  "shows": "Cantina Chicken Bowl"
+ },
+ "breakfast-crunchwrap": {
+  "credit": "JeepersMedia",
+  "licence": "CC BY 2.0",
+  "page": "https://www.flickr.com/photos/39160147@N03/14605266783",
+  "exact": true,
+  "shows": "Breakfast Crunchwrap"
+ },
+ "discovery-box": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://www.flickr.com/photos/25955895@N03/54413875100",
+  "exact": true,
+  "shows": "Discovery Luxe Box"
+ },
+ "cravings-box": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://www.flickr.com/photos/25955895@N03/54109874565",
+  "exact": true,
+  "shows": "Luxe Cravings Box"
+ },
+ "chicken-quesadilla": {
+  "credit": "Silverman68",
+  "licence": "CC BY 2.0",
+  "page": "https://www.flickr.com/photos/29120766@N07/6974949458",
+  "exact": true,
+  "shows": "Chicken Quesadilla"
+ },
+ "cheesy-roll-up": {
+  "credit": "Phillip Pessar",
+  "licence": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/w/index.php?curid=162636722",
+  "exact": true,
+  "shows": "Cheesy Roll Up"
+ },
+ "soft-taco-wl": {
+  "credit": "Willis Lam",
+  "licence": "CC BY-SA 2.0",
+  "page": "https://commons.wikimedia.org/w/index.php?curid=78707467",
+  "exact": true,
+  "shows": "Soft Taco"
  }
 }

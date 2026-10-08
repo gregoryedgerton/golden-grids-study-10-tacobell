@@ -2,19 +2,15 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Page } from "../lib/Page";
 import { useFontsReady } from "../lib/fonts";
-import { MenuBand, ValueBand, CombosBand } from "../bands/bands";
-import { CATEGORIES, COMBOS, inCategory, valueItems } from "../menu";
+import { MenuBand, BoxesBand } from "../bands/bands";
+import { CATEGORIES } from "../menu";
 import "../styles.css";
 
 function App() {
-  useFontsReady(["700 1em Oswald", "500 1em Oswald"]);
+  useFontsReady(["700 1em 'Barlow Condensed'", "900 1em Montserrat", "700 1em Barlow"]);
   return (
     <Page>
-      {CATEGORIES.map((c) => {
-        if (c.id === "value") return <ValueBand key={c.id} items={valueItems()} />;
-        if (c.id === "combos") return <CombosBand key={c.id} combos={COMBOS} />;
-        return <MenuBand key={c.id} category={c} items={inCategory(c.id)} />;
-      })}
+      {CATEGORIES.map((c) => (c.id === "boxes" ? <BoxesBand key={c.id} category={c} /> : <MenuBand key={c.id} category={c} />))}
     </Page>
   );
 }

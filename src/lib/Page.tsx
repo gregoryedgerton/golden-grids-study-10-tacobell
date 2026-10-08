@@ -16,7 +16,7 @@ export function Page({ children }: { children: ReactNode }) {
       <header className="brand">
         <div className="wrap brand__row">
           <a className="wordmark" href="./index.html"><span className="wordmark__mark" aria-hidden="true">G</span>GIFcommit</a>
-          <p className="brand__store">Pickup · <strong>Main St.</strong> · Open until midnight</p>
+          <p className="brand__store">A layout study of the Taco Bell menu · not the chain</p>
           <ul className="brand__links"><li>Menu</li><li>Rewards</li><li>Locations</li><li>Sign in</li></ul>
         </div>
       </header>
@@ -31,14 +31,17 @@ export function Page({ children }: { children: ReactNode }) {
       </div>
       <footer className="colophon wrap">
         <p>
-          A layout study of a quick-service chain's interactive food menu, after Taco Bell's menu and ordering flow as they are known
-          (tacobell.com refused the capture). GIFcommit is a fictional taqueria: every item, name, price, calorie count and ingredient is
-          invented, nothing is a chain's product, and the order on this page totals but is never sent. Photographs are Wikimedia Commons
-          files standing in for the invented items, credited where they appear and below. Nothing of the chain's design, marks or menu is
-          reproduced. Built with <a href="https://github.com/gregoryedgerton/golden-grids">Golden Grids</a> ·{" "}
-          <a href="https://www.npmjs.com/package/@gifcommit/golden-grids">npm</a> · <a href="https://gregoryedgerton.github.io/golden-grids/">generator</a>.
+          A layout study of Taco Bell's online food menu — <a href="https://www.tacobell.com/food">tacobell.com/food</a>, its category pages such as{" "}
+          <a href="https://www.tacobell.com/food/boxes-and-combos">Boxes &amp; Combos</a>, and its item pages such as the{" "}
+          <a href="https://www.tacobell.com/food/deals-and-combos/supreme-luxe-box">Supreme Luxe Box</a> — as read on October 8, 2026. The categories, item
+          names, prices, calories, what each item includes, the add-ons and their prices, the boxes' components and swaps are the menu's own facts as the
+          site listed them for its sample store; prices vary by location. GIFcommit is a layout-study brand, not the chain: the descriptions are the
+          study's words, the photographs are fans' photographs of the real items, from Wikimedia Commons and Flickr under CC BY, CC BY-SA or CC0 (credited where they appear and below); items with no such photograph are shown as type, none
+          of the chain's photography, marks or copy is reproduced, and the order on this page totals but is never sent. Built with{" "}
+          <a href="https://github.com/gregoryedgerton/golden-grids">Golden Grids</a> · <a href="https://www.npmjs.com/package/@gifcommit/golden-grids">npm</a> ·{" "}
+          <a href="https://gregoryedgerton.github.io/golden-grids/">generator</a>.
         </p>
-        <details className="credits"><summary>Photograph credits</summary><ul>{Object.entries(PHOTOS).map(([k, p]) => <li key={k}><a href={p.page}>{k}</a> — {p.credit}, {p.licence}.</li>)}</ul></details>
+        <details className="credits"><summary>Photograph credits</summary><ul>{Object.entries(PHOTOS).filter(([, p]) => p.exact).map(([k, p]) => <li key={k}><a href={p.page}>{p.shows ?? k}</a> — {p.credit}, {p.licence}.</li>)}</ul></details>
       </footer>
     </>
   );

@@ -1,12 +1,12 @@
 import { useSyncExternalStore } from "react";
-import { byId, COMBOS, type Item } from "../menu";
+import { byId, BOXES, BUILD, type Item, type Option } from "../menu";
 
 /**
- * The order: lines of a customised item, totalled. A tiny external store so
- * the menu bands, the customiser and the order panel share it without a
- * state library. Nothing is sent anywhere; Checkout says so.
+ * The order: lines of a customised item or a box, totalled. A tiny
+ * external store so the menu bands, the customiser and the order panel
+ * share it without a state library. Nothing is sent anywhere.
  */
-export interface Line { key: string; itemId: string; qty: number; removed: string[]; extras: string[]; choices: Record<string, string>; unit: number; cal: number; summary: string }
+export interface Line { key: string; name: string; qty: number; unit: number; cal: number; summary: string; url?: string }
 
 let lines: Line[] = [];
 const subs = new Set<() => void>();
@@ -18,7 +18,7 @@ export function priceOf(item: Item, choices: Record<string, string>, extras: str
     const c = o.choices.find((x) => x.id === (choices[o.id] ?? o.default));
     if (c) { price += c.price ?? 0; cal += c.cal ?? 0; }
   }
-  for (const e of extras) { const a = item.addons?.find((x) => x.id === e); if (a) { price += a.extra ?? 0; cal += a.cal ?? 0; } }
+  for (const e of extras) { const a = [...(item.addons ?? []), ...(item.sauces ?? [])].find((x) => x.id === e); if (a) { price += a.extra ?? 0; cal += a.cal ?? 0; } }
   return { price: Math.max(0, Math.round(price * 100) / 100), cal: Math.max(0, cal) };
 }
 
@@ -26,29 +26,41 @@ export function summarise(item: Item, removed: string[], extras: string[], choic
   const parts: string[] = [];
   for (const o of item.options ?? []) { const id = choices[o.id] ?? o.default; if (id !== o.default) parts.push(o.choices.find((c) => c.id === id)?.name ?? id); }
   for (const r of removed) parts.push(`no ${item.ingredients.find((i) => i.id === r)?.name.toLowerCase() ?? r}`);
-  for (const e of extras) parts.push(`+ ${item.addons?.find((a) => a.id === e)?.name.toLowerCase() ?? e}`);
+  for (const e of extras) parts.push(`+ ${[...(item.addons ?? []), ...(item.sauces ?? [])].find((a) => a.id === e)?.name.toLowerCase() ?? e}`);
   return parts.join(", ");
+}
+
+function push(line: Omit<Line, "qty"> & { qty?: number }) {
+  const qty = line.qty ?? 1;
+  const existing = lines.find((l) => l.key === line.key);
+  lines = existing ? lines.map((l) => (l.key === line.key ? { ...l, qty: l.qty + qty } : l)) : [...lines, { ...line, qty }];
+  emit();
 }
 
 export function addLine(itemId: string, qty: number, removed: string[], extras: string[], choices: Record<string, string>) {
   const item = byId[itemId];
   const { price, cal } = priceOf(item, choices, extras);
   const summary = summarise(item, removed, extras, choices);
-  const key = `${itemId}|${summary}`;
-  const existing = lines.find((l) => l.key === key);
-  lines = existing ? lines.map((l) => (l.key === key ? { ...l, qty: l.qty + qty } : l)) : [...lines, { key, itemId, qty, removed, extras, choices, unit: price, cal, summary }];
-  emit();
+  push({ key: `${itemId}|${summary}`, name: item.name, qty, unit: price, cal, summary, url: item.url });
 }
-export function addCombo(comboId: string) {
-  const combo = COMBOS.find((c) => c.id === comboId)!;
-  const items = combo.items.map((id) => byId[id]);
-  const cal = items.reduce((s, i) => s + i.cal, 0);
-  const key = `combo:${comboId}`;
-  const existing = lines.find((l) => l.key === key);
-  lines = existing ? lines.map((l) => (l.key === key ? { ...l, qty: l.qty + 1 } : l)) : [...lines, { key, itemId: key, qty: 1, removed: [], extras: [], choices: {}, unit: combo.price, cal, summary: items.map((i) => i.name).join(", ") }];
-  emit();
+
+/** A box: the components chosen for each slot and a drink, at the box price. */
+export function addBox(boxId: string, picks: Record<string, string>, drinkId: string) {
+  const box = BOXES.find((b) => b.id === boxId)!;
+  const names = box.slots.map((s) => byId[picks[s.id] ?? s.itemId].name);
+  const drink = box.drink.choices.find((c) => c.id === drinkId) ?? box.drink.choices[0];
+  const cal = box.slots.reduce((s, sl) => s + byId[picks[sl.id] ?? sl.itemId].cal, 0) + (drink.cal ?? 0);
+  push({ key: `box:${boxId}|${names.join("+")}|${drink.id}`, name: box.name, unit: box.price, cal, summary: [...names, drink.name].join(", "), url: box.url });
 }
-export function nameOf(itemId: string) { return itemId.startsWith("combo:") ? `${COMBOS.find((c) => c.id === itemId.slice(6))?.name ?? "Combo"} combo` : byId[itemId]?.name ?? itemId; }
+
+export function addBuild(picks: Record<string, string>, drinkId: string) {
+  const names = BUILD.groups.map((g) => byId[picks[g.id] ?? g.items[0]].name);
+  const drink = BUILD.drink.choices.find((c) => c.id === drinkId) ?? BUILD.drink.choices[0];
+  const cal = BUILD.groups.reduce((s, g) => s + byId[picks[g.id] ?? g.items[0]].cal, 0) + (drink.cal ?? 0);
+  push({ key: `build|${names.join("+")}|${drink.id}`, name: BUILD.name, unit: BUILD.price, cal, summary: [...names, drink.name].join(", "), url: BUILD.url });
+}
+
+export function drinkCal(drink: Option, id: string) { return drink.choices.find((c) => c.id === id)?.cal ?? 0; }
 export function setQty(key: string, qty: number) { lines = qty <= 0 ? lines.filter((l) => l.key !== key) : lines.map((l) => (l.key === key ? { ...l, qty } : l)); emit(); }
 export function clearOrder() { lines = []; emit(); }
 

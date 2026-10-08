@@ -4,13 +4,16 @@ Guidance for agents working in a Golden Grids layout study.
 
 ## What this repo is
 
-Study 10: a quick-service chain's interactive food menu (Taco Bell's, from
-its known structure) rebuilt as GIFcommit, a fictional taqueria. ONE page.
-`src/menu.ts` is the whole menu (items, ingredients, options, extras,
-combos); `src/lib/order.ts` the order store; `src/lib/Customizer.tsx` the
-customiser; `src/bands/bands.tsx` the category bands (`MenuBand`,
-`ValueBand`, `CombosBand`); `src/lib/modules.tsx` the category strip and
-order panel; `src/lib/Page.tsx` the shell. Read `docs/program/PROGRAM.md`,
+Study 10: Taco Bell's online food menu (tacobell.com/food, its category
+pages and item pages) rebuilt as GIFcommit, with the menu's real facts as
+read on October 8, 2026. ONE page. `src/menu.ts` is the menu (categories,
+items with price, calories, what's included, add-ons, sauces, Make-it
+switches; boxes with components and swaps; Build Your Own groups);
+`captures/menu-capture.md` records what was read; `src/lib/order.ts` the
+order store; `src/lib/Customizer.tsx` the item, box and builder views;
+`src/bands/bands.tsx` the bands; `src/lib/modules.tsx` the strip and order
+panel; `src/lib/Page.tsx` the shell; `src/photos.json` the photographs'
+credits and whether each shows the exact item. Read `docs/program/PROGRAM.md`,
 then `STUDY-BRIEF.md`, then `README.md`.
 
 Live at https://gregoryedgerton.github.io/golden-grids-study-10-tacobell/;
@@ -146,27 +149,39 @@ README: the smallest line, and that no screen-reader user has tested it.
 
 ## This study's own rules
 
-- NO capture: tacobell.com refuses automated browsers (HTTP/2 protocol
-  error, timeout over HTTP/1.1). Structure is from knowledge of the menu;
-  the README says so. Do not reproduce a chain's item names, prices,
-  photographs or copy.
-- The menu is FICTION and says so: every item, price, calorie, ingredient
-  and combo in `src/menu.ts` is invented. Photographs are Commons stand-ins
-  (`captures/commons.tsv`), credited in the footer and in each open item;
-  none may show a chain's product.
-- The order lives in `src/lib/order.ts` and never leaves the page: Checkout
-  and Clear say what they do. Prices and calories are computed from the
-  item plus its choices and extras (`priceOf`); never type a total.
-- An item's square is the control and the customiser opens IN the square
-  (expanded cell); the order panel is the only other place state shows.
-  Close is at the top right of the open cell, offset under the sticky
-  category strip (`.cell__head { top: 48px }`).
-- Odd-count bands are landscape only as `top`/`bottom`, even-count only as
-  `right`/`left`; `ORIENT` in `bands.tsx` holds each category's pair. Below
-  desktop a run of five or more splits into two grids (`Grids`).
-- Register is the brand's as widely known (purple, pink, condensed display,
-  calories everywhere), not measured; Oswald stands in. The value yellow is
-  the one other ground.
+- The FACTS are the site's (Greg, 2026-10-08: "use the content here from
+  menu items to pictures and drill down"): names, prices, calories, what
+  is included, add-ons and their prices, Make-it switches, box components
+  and swaps, builder groups — as read in the browser pane, since the site
+  refuses automated browsers. Descriptions are the study's own words. Do
+  not type a fact the capture record cannot support; to update, read the
+  pages again and update `captures/menu-capture.md` with them.
+- NOT the chain's photography or copy: nothing from tacobell.com's images
+  or marketing text goes in the repo or the deploy. Photographs are fans'
+  photographs of the exact items under CC BY, CC BY-SA or CC0 (Wikimedia
+  Commons, Flickr via Openverse), credited in the footer and in each open
+  item, with `exact: true` in `src/photos.json`. Reddit and other posts
+  without a reuse licence are not used, however good. An item with no
+  exact photograph is a type square, never a picture of something else.
+- The brand is GIFcommit, spelled exactly so, never transformed to upper
+  or lower case by CSS.
+- The register is the site's, measured (`captures/tokens.md`): purple
+  #501098, accent #9a23f8, black bar, white cards, 2px radii, uppercase
+  bold condensed names (Barlow Condensed for Interstate), Montserrat 900
+  for the big headings. Dark is the study's.
+- The order lives in `src/lib/order.ts` and never leaves the page; a box is
+  one line at the box price. Prices and calories are computed from the
+  item plus its choices (`priceOf`); never type a total.
+- An item's square is the control; the customiser, box view and builder
+  open IN the square (expanded cell) with Close at its top right, under the
+  sticky strip (`.cell__head { top: 48px }`).
+- Within a band the first item is the hero; type squares take the larger
+  squares and photographs the smaller; the two smallest type squares show
+  the price as the line with the name spoken (`compact`); the "+N" square
+  sits third and links to the category on tacobell.com. Odd-count bands are
+  landscape only as `top`/`bottom`, even-count as `right`/`left`
+  (`ORIENT` + `forCount`). Below desktop five or more squares split into
+  two grids (`Grids`).
 
 Two geometry rules, verified against source, that every band relies on:
 

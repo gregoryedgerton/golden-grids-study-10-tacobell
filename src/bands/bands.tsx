@@ -5,17 +5,18 @@ import { useViewport, pick, type Viewport } from "../lib/viewport";
 import { useExpandGroup, ExpandedCell } from "../lib/expand";
 import { Fact } from "../lib/boxes";
 import { Band } from "./Band";
-import { Customizer, ComboView } from "../lib/Customizer";
-import { money, type Item, type Category, type Combo } from "../menu";
+import { Customizer, BoxView, BuildView } from "../lib/Customizer";
+import { money, byId, BOXES, BUILD, LISTS, inCategory, type Item, type Category, type Box } from "../menu";
 import photos from "../photos.json";
 
 /**
  * A category is a band: its items as squares, the first in the hero. An
- * item's square is its photograph with name, price and calories over the
- * foot; choosing it expands the square into the customiser (remove, add,
- * swap, size, quantity, add to order). Below desktop a run of five or more
- * is dealt into two grids so no square falls under about 114px. Each
- * category has its own orientation, so eight bands turn through the eight.
+ * item's square is a photograph of the real item (a third party's, from
+ * Commons) with its name, price and calories over the foot; choosing it
+ * expands the square into the customiser. A category with more items than
+ * the band shows ends with a square that says how many more, linking to
+ * the category on tacobell.com. Below desktop a run of five or more is
+ * dealt into two grids so no square falls under about 114px.
  */
 type O = [PlacementValue, boolean];
 const orient = (v: Viewport, desktop: O, mobile: O) => pick<O>(v, { mobile, tablet: desktop, desktop });
@@ -30,13 +31,38 @@ function Grids({ boxes, placement, cw, split }: { boxes: React.ReactNode[]; plac
   );
 }
 const noteFor = (v: Viewport, n: number, placement: PlacementValue, cw: boolean) => v !== "desktop" && n >= 5 ? `two grids: from=1 to=3 · placement="top" / from=1 to=${n - 3}` : `from=1 to=${n} · placement="${placement}" · clockwise=${cw}`;
-const src = (key?: string) => `${import.meta.env.BASE_URL}assets/s10-${key ?? "crunchy"}.jpg`;
-const PHOTOS = photos as Record<string, { credit: string; licence: string; page: string }>;
+const src = (key?: string) => `${import.meta.env.BASE_URL}assets/s10-${key ?? "crunchy-taco"}.jpg`;
+const PHOTOS = photos as Record<string, { credit: string; licence: string; page: string; exact?: boolean; shows?: string }>;
 export { PHOTOS, src };
+const TAGS: Record<string, string> = { vegetarian: "V", spicy: "🌶", new: "New", value: "$", online: "Online" };
 
-const TAGS: Record<string, string> = { vegetarian: "V", spicy: "🌶", new: "New", value: "$" };
+function Credit({ photo }: { photo?: string }) {
+  const p = PHOTOS[photo ?? "crunchy-taco"];
+  return <figcaption className="note">Photograph{p.shows ? ` of ${p.shows}` : ""}: {p.credit}, <a href={p.page}>{p.page.includes("flickr") ? "Flickr" : "Wikimedia Commons"}</a>, {p.licence}. A fan's photograph, not the chain's.</figcaption>;
+}
 
-export function ItemCard({ item, x, slotKey }: { item: Item; x: ReturnType<typeof useExpandGroup>; slotKey: string }) {
+/** No fan photograph of the exact item under a free licence: the square is type. */
+function TypeCard({ item, x, slotKey, compact }: { item: Item; x: ReturnType<typeof useExpandGroup>; slotKey: string; compact?: boolean }) {
+  if (compact) {
+    // In the two smallest squares a long name cannot be set legibly; the price is the line and the name is spoken.
+    return (
+      <Fact fitClass="fit--num" max={120} tone="paper" spoken={`${item.name}, ${money(item.price)}, ${item.cal} calories`} body={<p>{item.name}</p>}
+        expand={{ group: x, slotKey, title: `${item.name} · ${money(item.price)} · ${item.cal} cal`, full: <Customizer item={item} onAdded={() => {}} /> }}>
+        {money(item.price)}
+      </Fact>
+    );
+  }
+  return (
+    <Fact label={`${money(item.price)} · ${item.cal} cal`} fitClass="fit--name" max={120} tone="paper"
+      body={<><p className="box__body--short">{item.desc}</p><p className="box__body--long">{item.desc} {item.long ?? ""}</p></>}
+      expand={{ group: x, slotKey, title: `${item.name} · ${money(item.price)} · ${item.cal} cal`, full: <Customizer item={item} onAdded={() => {}} /> }}>
+      {item.name}
+    </Fact>
+  );
+}
+
+export function ItemCard({ item, x, slotKey, compact }: { item: Item; x: ReturnType<typeof useExpandGroup>; slotKey: string; compact?: boolean }) {
+  if (!item.photo || !PHOTOS[item.photo]?.exact) return <TypeCard item={item} x={x} slotKey={slotKey} compact={compact} />;
   return (
     <>
       <figure className="media">
@@ -50,72 +76,79 @@ export function ItemCard({ item, x, slotKey }: { item: Item; x: ReturnType<typeo
       </figure>
       {x.isOpen(slotKey) && (
         <ExpandedCell id={x.panelId(slotKey)} title={`${item.name} · ${money(item.price)} · ${item.cal} cal`} onClose={x.close} closeRef={x.closeRef}>
-          <div className="cell__split">
-            <figure className="cell__photo"><img src={src(item.photo)} alt="" /><figcaption className="note">Photograph: {PHOTOS[item.photo ?? "crunchy"].credit}, <a href={PHOTOS[item.photo ?? "crunchy"].page}>Wikimedia Commons</a>, {PHOTOS[item.photo ?? "crunchy"].licence}. A stand-in; the item is invented.</figcaption></figure>
-            <Customizer item={item} onAdded={() => {}} />
-          </div>
+          <div className="cell__split"><figure className="cell__photo"><img src={src(item.photo)} alt="" /><Credit photo={item.photo} /></figure><Customizer item={item} onAdded={() => {}} /></div>
         </ExpandedCell>
       )}
     </>
   );
 }
 
-const ORIENT: Record<string, [O, O]> = {
-  tacos: [["right", true], ["top", true]], burritos: [["top", true], ["right", true]], bowls: [["bottom", false], ["left", false]], sides: [["top", false], ["right", false]],
-  breakfast: [["bottom", true], ["left", true]], drinks: [["left", false], ["bottom", false]], value: [["top", true], ["left", true]], combos: [["bottom", false], ["right", false]],
-};
+function BoxCard({ box, x }: { box: Box; x: ReturnType<typeof useExpandGroup> }) {
+  return (
+    <>
+      <figure className="media">
+        <img src={src(box.photo)} alt="" loading="lazy" />
+        <button className="media__open" {...x.triggerProps(box.id)}><span className="visually-hidden">Open {box.name}, {money(box.price)}, {box.calRange} calories</span></button>
+        <figcaption className="media__caption"><span className="media__name">{box.name}{box.tags?.map((t) => <span key={t} className={`tag tag--${t}`} aria-label={t}>{TAGS[t]}</span>)}</span><span className="media__meta"><strong>{money(box.price)}</strong> · {box.calRange} cal</span><span className="media__desc">{box.blurb}</span></figcaption>
+      </figure>
+      {x.isOpen(box.id) && <ExpandedCell id={x.panelId(box.id)} title={`${box.name} · ${money(box.price)}`} onClose={x.close} closeRef={x.closeRef}><div className="cell__split"><figure className="cell__photo"><img src={src(box.photo)} alt="" /><Credit photo={box.photo} /></figure><BoxView box={box} onAdded={() => {}} /></div></ExpandedCell>}
+    </>
+  );
+}
 
-export function MenuBand({ category, items }: { category: Category; items: Item[] }) {
+const ORIENT: Record<string, [O, O]> = {
+  "best-sellers": [["top", true], ["right", true]], "luxe-value": [["bottom", false], ["left", false]], cantina: [["top", false], ["right", false]], boxes: [["bottom", true], ["left", true]],
+  tacos: [["top", true], ["right", true]], burritos: [["bottom", false], ["left", false]], specialties: [["top", false], ["right", false]], quesadillas: [["bottom", true], ["left", true]],
+  nachos: [["top", true], ["right", true]], snacks: [["bottom", false], ["left", false]], drinks: [["top", false], ["right", false]], vegetarian: [["bottom", true], ["left", true]], breakfast: [["top", true], ["right", true]],
+};
+/** Even counts take right/left; the table above is for odd counts, so an even band turns the pair a quarter. */
+const forCount = ([d, m]: [O, O], n: number): [O, O] => (n % 2 === 0 ? [[d[0] === "top" ? "right" : "left", d[1]], [m[0] === "right" ? "top" : "bottom", m[1]]] : [d, m]);
+
+export function MenuBand({ category }: { category: Category }) {
   const v = useViewport();
   const x = useExpandGroup();
-  const [d, m] = ORIENT[category.id] ?? [["right", true], ["top", true]];
+  const all = LISTS[category.id] ? LISTS[category.id].map((id) => byId[id]) : inCategory(category.id);
+  const show = Math.min(category.show ?? 7, all.length);
+  const shown = all.slice(0, show);
+  const more = all.length - show;
+  // The first item is the hero. After it, items without a photograph take
+  // the larger squares (type needs room), photographs the smaller ones (a
+  // picture survives 57px; a name does not), and the "more" square sits
+  // third, where it is still legible.
+  const hasPhoto = (it: Item) => !!(it.photo && PHOTOS[it.photo]?.exact);
+  const items = [shown[0], ...shown.slice(1).filter((it) => !hasPhoto(it)), ...shown.slice(1).filter(hasPhoto)];
+  const boxes: React.ReactNode[] = items.map((it, i) => <GoldenBox key={it.id} {...x.boxProps(`${category.id}-${it.id}`)}><ItemCard item={it} x={x} slotKey={`${category.id}-${it.id}`} compact={i + (more > 0 ? 1 : 0) >= 4} /></GoldenBox>);
+  if (more > 0) boxes.splice(Math.min(2, boxes.length), 0, <GoldenBox key="more"><Fact label={category.name} fitClass="fit--num" max={120} tone="brand" link={{ href: category.url, label: "All on tacobell.com", aria: `All ${all.length} ${category.name} items on tacobell.com` }} body={<p>{more} more in this category on the site.</p>}>{`+${more}`}</Fact></GoldenBox>);
+  const n = boxes.length;
+  const [d, m] = forCount(ORIENT[category.id] ?? [["top", true], ["right", true]], n);
   const [placement, cw] = orient(v, d, m);
-  const boxes = items.map((it) => <GoldenBox key={it.id} {...x.boxProps(it.id)}><ItemCard item={it} x={x} slotKey={it.id} /></GoldenBox>);
-  if (items.length === 2) boxes.push(<GoldenBox key="word"><Fact label={category.name} fitClass="fit--word" max={120} tone="brand">{String(items.length)} items</Fact></GoldenBox>);
   return (
-    <Band id={category.id} title={category.name} lesson={category.blurb} note={noteFor(v, boxes.length, placement, cw)}>
+    <Band id={category.id} title={category.name} lesson={category.blurb} aside={{ href: category.url, label: "On tacobell.com" }} note={noteFor(v, n, placement, cw)}>
       <Grids placement={placement} cw={cw} split={v !== "desktop"} boxes={boxes} />
     </Band>
   );
 }
 
-/** Value: the seven cheapest things, price as the line. */
-export function ValueBand({ items }: { items: Item[] }) {
+/** Boxes & combos: the three Luxe Boxes, Build Your Own, and two combos. */
+export function BoxesBand({ category }: { category: Category }) {
   const v = useViewport();
   const x = useExpandGroup();
-  const [placement, cw] = orient(v, ["top", true], ["left", true]);
-  const list = items.slice(0, 7);
+  const boxes: React.ReactNode[] = [
+    ...BOXES.slice(0, 5).map((b) => <GoldenBox key={b.id} {...x.boxProps(b.id)}><BoxCard box={b} x={x} /></GoldenBox>),
+    <GoldenBox key="build" {...x.boxProps("build")}>
+      <figure className="media">
+        <img src={src(BUILD.photo)} alt="" loading="lazy" />
+        <button className="media__open" {...x.triggerProps("build")}><span className="visually-hidden">Build your own Luxe Cravings Box, {money(BUILD.price)}</span></button>
+        <figcaption className="media__caption"><span className="media__name">{BUILD.name}<span className="tag tag--online">Online</span></span><span className="media__meta"><strong>{money(BUILD.price)}</strong> · {BUILD.calRange} cal</span><span className="media__desc">{BUILD.blurb}</span></figcaption>
+      </figure>
+      {x.isOpen("build") && <ExpandedCell id={x.panelId("build")} title={`${BUILD.name} · ${money(BUILD.price)}`} onClose={x.close} closeRef={x.closeRef}><BuildView onAdded={() => {}} /></ExpandedCell>}
+    </GoldenBox>,
+  ];
+  const [d, m] = forCount(ORIENT.boxes, boxes.length);
+  const [placement, cw] = orient(v, d, m);
   return (
-    <Band id="value" title="Value menu" lesson="Seven things under three dollars, cheapest first. The price is the point, so the price is the line." note={noteFor(v, list.length, placement, cw)}>
-      <Grids placement={placement} cw={cw} split={v !== "desktop"} boxes={list.map((it) => (
-        <GoldenBox key={it.id} {...x.boxProps(it.id)}>
-          <Fact label={it.name} fitClass="fit--num" max={120} tone="value" imprint={<svg className="box__imprint" viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="21" textAnchor="middle" fontSize="24" fontWeight="700" fill="currentColor" fontFamily="Oswald, sans-serif">$</text></svg>}
-            body={<><p className="box__body--short">{it.desc}</p><p className="box__body--long">{it.desc} {it.cal} calories.</p></>}
-            expand={{ group: x, slotKey: it.id, title: `${it.name} · ${money(it.price)}`, full: <Customizer item={it} onAdded={() => {}} /> }}>
-            {money(it.price)}
-          </Fact>
-        </GoldenBox>
-      ))} />
-    </Band>
-  );
-}
-
-export function CombosBand({ combos }: { combos: Combo[] }) {
-  const v = useViewport();
-  const x = useExpandGroup();
-  const [placement, cw] = orient(v, ["bottom", false], ["right", false]);
-  return (
-    <Band id="combos" title="Combos" lesson="An entrée, a side and a medium drink, priced a dollar or two under the three apart. Choose one to see what is in it and what it saves." note={noteFor(v, combos.length, placement, cw)}>
-      <Grids placement={placement} cw={cw} split={v !== "desktop"} boxes={combos.map((c) => (
-        <GoldenBox key={c.id} {...x.boxProps(c.id)}>
-          <figure className="media">
-            <img src={src(c.photo)} alt="" loading="lazy" />
-            <button className="media__open" {...x.triggerProps(c.id)}><span className="visually-hidden">Open combo: {c.name}, {money(c.price)}</span></button>
-            <figcaption className="media__caption"><span className="media__name">{c.name} combo</span><span className="media__meta"><strong>{money(c.price)}</strong></span><span className="media__desc">{c.blurb}</span></figcaption>
-          </figure>
-          {x.isOpen(c.id) && <ExpandedCell id={x.panelId(c.id)} title={`${c.name} combo · ${money(c.price)}`} onClose={x.close} closeRef={x.closeRef}><ComboView combo={c} onAdded={() => {}} /></ExpandedCell>}
-        </GoldenBox>
-      ))} />
+    <Band id={category.id} title={category.name} lesson={category.blurb} aside={{ href: category.url, label: "On tacobell.com" }} note={noteFor(v, boxes.length, placement, cw)}>
+      <Grids placement={placement} cw={cw} split={v !== "desktop"} boxes={boxes} />
     </Band>
   );
 }

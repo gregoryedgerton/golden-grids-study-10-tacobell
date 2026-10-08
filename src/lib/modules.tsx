@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CATEGORIES, DISCLAIMER, money } from "../menu";
-import { useOrder, setQty, clearOrder, nameOf } from "./order";
+import { useOrder, setQty, clearOrder } from "./order";
 
 /** The sticky category strip, the order panel, the nutrition line. Lists and panels, not grids. */
 export function CategoryStrip() {
@@ -25,8 +25,8 @@ export function OrderPanel() {
           <ul className="order__lines">
             {o.lines.map((l) => (
               <li key={l.key}>
-                <span className="order__name"><strong>{nameOf(l.itemId)}</strong>{l.summary && <span className="order__sum">{l.summary}</span>}<span className="order__cal">{l.cal * l.qty} cal</span></span>
-                <span className="order__qty" role="group" aria-label={`Quantity of ${nameOf(l.itemId)}`}><button type="button" onClick={() => setQty(l.key, l.qty - 1)} aria-label="One fewer">−</button><span>{l.qty}</span><button type="button" onClick={() => setQty(l.key, l.qty + 1)} aria-label="One more">+</button></span>
+                <span className="order__name"><strong>{l.name}</strong>{l.summary && <span className="order__sum">{l.summary}</span>}<span className="order__cal">{l.cal * l.qty} cal</span></span>
+                <span className="order__qty" role="group" aria-label={`Quantity of ${l.name}`}><button type="button" onClick={() => setQty(l.key, l.qty - 1)} aria-label="One fewer">−</button><span>{l.qty}</span><button type="button" onClick={() => setQty(l.key, l.qty + 1)} aria-label="One more">+</button></span>
                 <span className="order__price">{money(l.unit * l.qty)}</span>
               </li>
             ))}
