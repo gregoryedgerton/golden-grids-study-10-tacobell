@@ -7,3 +7,7 @@
 - Radii: 2px ×26 (buttons), 25px (pill), 4px.
 - Buttons: #501098 fill, white uppercase Interstate Bold, 2px radius; outlined #501098 text variant.
 Stand-ins: Barlow / Barlow Condensed for Interstate, Montserrat 900 for Brandon Grotesque Black.
+
+## CTAs (measured on /food/tacos)
+- Primary ("ADD TO ORDER", "START YOUR ORDER"): background #501098, white text, 2px transparent border, radius 2px, Interstate Bold 16px (14px in the header) uppercase, padding 8px 10px, height 40px, full card width.
+- Secondary ("CUSTOMIZE"): transparent background, #501098 text, 2px solid #501098 border, radius 2px, same type and size.

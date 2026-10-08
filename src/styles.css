@@ -125,7 +125,7 @@ main { min-width: 0; }
 .box__body { margin: 0.5em 0 0; font-size: clamp(0.9rem, 4.6cqmin, 1.05rem); line-height: 1.45; max-width: var(--measure); flex: 0 0 auto; }
 .box__body p { margin: 0 0 0.5em; } .box__body p:last-child { margin-bottom: 0; }
 .box__foot { margin-top: auto; padding-top: 0.5em; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.3em 1em; align-items: baseline; font-size: clamp(0.75rem, 4cqmin, 0.95rem); }
-.more { min-height: 24px; font: 700 1em/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; color: var(--brand-ink); background: transparent; border: 0; padding: 0.3em 0; cursor: pointer; border-bottom: 2px solid var(--brand); }
+.more { min-height: 24px; font: 700 1em/1 var(--font); letter-spacing: 0; text-transform: uppercase; color: var(--brand-ink); background: transparent; border: 0; padding: 0.3em 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .more:hover { text-decoration: underline; }
 @container (max-height: 200px) { .box__body { display: none; } }
 @container (max-height: 320px) { .box__body--long { display: none; } }
@@ -160,12 +160,12 @@ main { min-width: 0; }
 .cust__total strong { font: 700 26px/1 var(--display); color: var(--ink); }
 
 /* --- Buttons --------------------------------------------------------------------- */
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; font: 700 15px/1 var(--display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-ink); background: transparent; border: 2px solid var(--brand); border-radius: var(--radius); cursor: pointer; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 10px; font: 700 16px/1.2 var(--font); letter-spacing: 0; text-transform: uppercase; color: var(--brand-ink); background: transparent; border: 2px solid var(--brand); border-radius: 2px; cursor: pointer; text-decoration: none; }
 .btn--primary { background: var(--brand); border-color: var(--brand); color: #fff; }
 .btn--ghost { background: transparent; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn:hover:not(:disabled) { filter: brightness(1.08); }
-@media (prefers-color-scheme: dark) { .btn--primary { background: var(--brand); border-color: var(--brand); color: #fff; } }
+@media (prefers-color-scheme: dark) { .btn { color: var(--brand-ink); border-color: var(--brand-ink); } .btn--primary { background: var(--brand); border-color: var(--brand); color: #fff; } }
 
 /* --- The order panel -------------------------------------------------------------- */
 .order { position: fixed; left: 0; right: 0; bottom: 0; z-index: 2; background: var(--card); border-top: 3px solid var(--brand); box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12); }
