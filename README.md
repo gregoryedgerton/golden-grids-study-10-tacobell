@@ -123,7 +123,7 @@ fan posts without a reuse licence were not used.
 
 - No capture of the reference's pixels, so no side-by-side; the structure
   and tokens are from what the browser pane could read.
-- Of 73 items, 29 have a fan photograph of the exact item; the rest are
+- Of 73 items, 28 have a fan photograph of the exact item; the rest are
   type. The reference has a photograph for every item.
 - Six boxes and combos of the site's seventeen; seven items of a category's
   thirty or thirty-six, with the rest a link.

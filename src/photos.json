@@ -268,8 +268,9 @@
   "credit": "Phillip Pessar",
   "licence": "CC BY 2.0",
   "page": "https://www.flickr.com/photos/25955895@N03/54432484244",
-  "exact": true,
-  "shows": "Cantina Chicken Bowl"
+  "exact": false,
+  "shows": "Cantina Chicken Bowl",
+  "note": "a photograph of a menu screen showing the chain's own image; not used"
  },
  "breakfast-crunchwrap": {
   "credit": "JeepersMedia",
