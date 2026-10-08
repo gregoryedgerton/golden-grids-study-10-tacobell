@@ -201,3 +201,9 @@ main { min-width: 0; }
 
 /* A type square's body is an ingredient list; it needs more room than a sentence. */
 @container (max-height: 300px) { .box--paper .box__body { display: none; } }
+
+/* The expanded cell's Close is the site's secondary CTA: outlined purple, 2px radius, bold uppercase. */
+.cell__close { min-height: 40px; padding: 8px 10px; font: 700 16px/1.2 var(--font); letter-spacing: 0; text-transform: uppercase; color: var(--brand-ink); background: transparent; border: 2px solid var(--brand); border-radius: 2px; gap: 6px; }
+.cell__close:hover { background: var(--brand); color: #fff; }
+.cell__close .cell__x { font: 700 18px/1 var(--font); }
+@media (prefers-color-scheme: dark) { .cell__close { border-color: var(--brand-ink); } }
