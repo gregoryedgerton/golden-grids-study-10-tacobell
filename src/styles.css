@@ -197,3 +197,6 @@ main { min-width: 0; }
 
 /* The category strip is sticky at the top, so an open cell's head sticks beneath it, not under it. */
 .cell__head { top: 48px; }
+
+/* A type square's body is an ingredient list; it needs more room than a sentence. */
+@container (max-height: 300px) { .box--paper .box__body { display: none; } }
