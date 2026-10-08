@@ -202,8 +202,10 @@ main { min-width: 0; }
 /* A type square's body is an ingredient list; it needs more room than a sentence. */
 @container (max-height: 300px) { .box--paper .box__body { display: none; } }
 
-/* The expanded cell's Close is the site's secondary CTA: outlined purple, 2px radius, bold uppercase. */
-.cell__close { min-height: 40px; padding: 8px 10px; font: 700 16px/1.2 var(--font); letter-spacing: 0; text-transform: uppercase; color: var(--brand-ink); background: transparent; border: 2px solid var(--brand); border-radius: 2px; gap: 6px; }
-.cell__close:hover { background: var(--brand); color: #fff; }
-.cell__close .cell__x { font: 700 18px/1 var(--font); }
-@media (prefers-color-scheme: dark) { .cell__close { border-color: var(--brand-ink); } }
+/* The site's secondary CTA ("CUSTOMIZE"): transparent, 2px purple border, 2px radius, bold uppercase; the
+   Close fills purple on hover. Measured in captures/tokens.md. */
+:root {
+  --cta2-font: 700 16px/1.2 var(--font); --cta2-tt: uppercase; --cta2-pad: 8px 10px; --cta2-min-h: 40px;
+  --cta2-color: var(--brand-ink); --cta2-bg: transparent; --cta2-border: 2px solid var(--brand-ink); --cta2-radius: 2px;
+  --cta2-hover-bg: var(--brand); --cta2-hover-color: #fff; --cta2-hover-border: 2px solid var(--brand);
+}
