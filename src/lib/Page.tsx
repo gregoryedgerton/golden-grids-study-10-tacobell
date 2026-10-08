@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Tools } from "./tools";
 import { CategoryStrip, OrderPanel, Disclaimer } from "./modules";
-import { PHOTOS } from "../bands/bands";
+import { PHOTOS, APP_URL, PLAY_URL } from "../bands/bands";
 
 /**
  * The shell: a brand bar with the store and the order, a sticky category
@@ -16,8 +16,8 @@ export function Page({ children }: { children: ReactNode }) {
       <header className="brand">
         <div className="wrap brand__row">
           <a className="wordmark" href="./index.html"><span className="wordmark__mark" aria-hidden="true">G</span>GIFcommit</a>
-          <p className="brand__store">A layout study of the Taco Bell menu · not the chain</p>
-          <ul className="brand__links"><li>Menu</li><li>Rewards</li><li>Locations</li><li>Sign in</li></ul>
+          <p className="brand__store">A layout study of the Taco Bell menu · Crear Más</p>
+          <ul className="brand__links"><li>Menu</li><li><a href={APP_URL}>App Store</a></li><li><a href={PLAY_URL}>Google Play</a></li></ul>
         </div>
       </header>
       <CategoryStrip />
@@ -37,7 +37,7 @@ export function Page({ children }: { children: ReactNode }) {
           names, prices, calories, what each item includes, the add-ons and their prices, the boxes' components and swaps are the menu's own facts as the
           site listed them for its sample store; prices vary by location. GIFcommit is a layout-study brand, not the chain: the descriptions are the
           study's words, the photographs are fans' photographs of the real items, from Wikimedia Commons and Flickr under CC BY, CC BY-SA or CC0 (credited where they appear and below); items with no such photograph are shown as type, none
-          of the chain's photography, marks or copy is reproduced, and the order on this page totals but is never sent. Built with{" "}
+          of the chain's photography, marks or copy is reproduced, and the order on this page totals but is never sent; to order, the real Taco Bell app is on the <a href={APP_URL}>App Store</a> and <a href={PLAY_URL}>Google Play</a>. Built with{" "}
           <a href="https://github.com/gregoryedgerton/golden-grids">Golden Grids</a> · <a href="https://www.npmjs.com/package/@gifcommit/golden-grids">npm</a> ·{" "}
           <a href="https://gregoryedgerton.github.io/golden-grids/">generator</a>.
         </p>

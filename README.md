@@ -51,7 +51,8 @@ in the square itself, so the page never leaves the menu to take an order.
 One page; `src/lib/Page.tsx` is the shell (black brand bar, sticky
 category strip in the site's order, the menu, the order panel beside it at
 desktop and as a drawer at the foot below). Each category is one band of up
-to seven items plus a "+N" square linking to the rest on tacobell.com. An
+to seven items plus a "+N" square linking to the rest on tacobell.com;
+each band's head links to the real Taco Bell app, where ordering happens. An
 item with a fan photograph of that exact item is a photograph square; one
 without is a type square (name, or in the two smallest squares the price,
 with the name spoken). Below desktop a run of five or more is dealt into

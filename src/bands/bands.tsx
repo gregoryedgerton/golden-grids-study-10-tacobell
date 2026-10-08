@@ -9,6 +9,10 @@ import { Customizer, BoxView, BuildView } from "../lib/Customizer";
 import { money, byId, BOXES, BUILD, LISTS, inCategory, type Item, type Category, type Box } from "../menu";
 import photos from "../photos.json";
 
+/** The real Taco Bell app, where the reference's "Order" controls lead. */
+export const APP_URL = "https://apps.apple.com/us/app/taco-bell-fast-food-deals/id497387361";
+export const PLAY_URL = "https://play.google.com/store/apps/details?id=com.tacobell.ordering";
+
 /**
  * A category is a band: its items as squares, the first in the hero. An
  * item's square is a photograph of the real item (a third party's, from
@@ -118,12 +122,12 @@ export function MenuBand({ category }: { category: Category }) {
   const hasPhoto = (it: Item) => !!(it.photo && PHOTOS[it.photo]?.exact);
   const items = [shown[0], ...shown.slice(1).filter((it) => !hasPhoto(it)), ...shown.slice(1).filter(hasPhoto)];
   const boxes: React.ReactNode[] = items.map((it, i) => <GoldenBox key={it.id} {...x.boxProps(`${category.id}-${it.id}`)}><ItemCard item={it} x={x} slotKey={`${category.id}-${it.id}`} compact={i + (more > 0 ? 1 : 0) >= 4} /></GoldenBox>);
-  if (more > 0) boxes.splice(Math.min(2, boxes.length), 0, <GoldenBox key="more"><Fact label={category.name} fitClass="fit--num" max={120} tone="brand" link={{ href: category.url, label: "All on tacobell.com", aria: `All ${all.length} ${category.name} items on tacobell.com` }} body={<p>{more} more in this category on the site.</p>}>{`+${more}`}</Fact></GoldenBox>);
+  if (more > 0) boxes.splice(Math.min(2, boxes.length), 0, <GoldenBox key="more"><Fact label={category.name} fitClass="fit--num" max={120} tone="brand" link={{ href: category.url, label: `See all ${all.length}`, aria: `See all ${all.length} ${category.name} items on tacobell.com` }} body={<p>{more} more in this category on the site.</p>}>{`+${more}`}</Fact></GoldenBox>);
   const n = boxes.length;
   const [d, m] = forCount(ORIENT[category.id] ?? [["top", true], ["right", true]], n);
   const [placement, cw] = orient(v, d, m);
   return (
-    <Band id={category.id} title={category.name} lesson={category.blurb} aside={{ href: category.url, label: "On tacobell.com" }} note={noteFor(v, n, placement, cw)}>
+    <Band id={category.id} title={category.name} lesson={category.blurb} aside={{ href: APP_URL, label: "Download the app" }} note={noteFor(v, n, placement, cw)}>
       <Grids placement={placement} cw={cw} split={v !== "desktop"} boxes={boxes} />
     </Band>
   );
@@ -147,7 +151,7 @@ export function BoxesBand({ category }: { category: Category }) {
   const [d, m] = forCount(ORIENT.boxes, boxes.length);
   const [placement, cw] = orient(v, d, m);
   return (
-    <Band id={category.id} title={category.name} lesson={category.blurb} aside={{ href: category.url, label: "On tacobell.com" }} note={noteFor(v, boxes.length, placement, cw)}>
+    <Band id={category.id} title={category.name} lesson={category.blurb} aside={{ href: APP_URL, label: "Download the app" }} note={noteFor(v, boxes.length, placement, cw)}>
       <Grids placement={placement} cw={cw} split={v !== "desktop"} boxes={boxes} />
     </Band>
   );
