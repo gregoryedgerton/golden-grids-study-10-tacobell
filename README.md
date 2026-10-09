@@ -39,12 +39,9 @@ page with four groups. Tokens were measured in the pane
 category tabs and names), GT America for body, Brandon Grotesque Black for
 the big headings. Barlow, Barlow Condensed and Montserrat 900 stand in.
 
-## The claim
+## Approach
 
-A menu is a grid of equal cards because a kiosk cannot know what you want;
-a golden grid makes each category a ranking — the first item in the hero
-square, the rest descending — and the customiser and the box's swaps open
-in the square itself, so the page never leaves the menu to take an order.
+The reference shows each category as a grid of equal cards and opens an item on a page of its own. The study sets each category as one grid with its first item in the largest square, and opens an item's customiser, or a box's swaps, in the square itself.
 
 ## The page
 
@@ -120,20 +117,22 @@ fan posts without a reuse licence were not used.
   (WCAG 2.0/2.1/2.2 A/AA, best practice) clean with an item open. No
   screen-reader user has tested it.
 
-## What did not
+## Notes for review
 
-- No capture of the reference's pixels, so no side-by-side; the structure
-  and tokens are from what the browser pane could read.
-- Of 73 items, 28 have a fan photograph of the exact item; the rest are
-  type. The reference has a photograph for every item.
-- Six boxes and combos of the site's seventeen; seven items of a category's
-  thirty or thirty-six, with the rest a link.
-- A box's swaps are the site's lists where the page showed them; the
-  Cantina and value items' add-on lists are the generic one from the item
-  pages read, which may differ by item.
-- Only even-count bands can be landscape as `right`/`left`; the ORIENT table
-  turns a pair a quarter for even counts, so which orientation a band gets
-  depends on how many of its items are shown.
+Observations for whoever reviews this study, recorded without a verdict. Whether the layout suits the page is assessed separately, after every study has been reviewed.
+
+- **No pixel capture.** The site refuses automated capture, so there is no side-by-side; structure, colour and type are from what was read in a browser.
+- **Photographs.** Of 73 items, 28 have a customer's photograph of that exact item; the rest are set as type. The reference has a photograph for every item.
+- **Coverage.** Six of the site's seventeen boxes and combos, and seven items of a category's thirty or more, with the rest a link.
+- **Add-on lists.** A box's swaps are the site's where the page showed them; the Cantina and value items use the general add-on list, which may differ by item.
+- **Orientation.** Whether a band is laid out by right/left or top/bottom depends on how many of its items are shown.
+
+## Disclosure
+
+Every page says what it is in three places, all read from
+[`src/study.json`](src/study.json): its title and description, a sticky notice
+at the top, and a disclosure at the very end listing the pages reviewed, what
+is real, what is invented or changed, and where each kind of asset came from.
 
 ## Study tools
 
