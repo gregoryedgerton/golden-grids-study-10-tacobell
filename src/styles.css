@@ -46,7 +46,7 @@
 }
 
 * { box-sizing: border-box; }
-html { background: var(--ground); color: var(--ink-soft); scroll-padding-top: 120px; }
+html { background: var(--ground); color: var(--ink-soft); scroll-padding-top: calc(120px + var(--study-banner-h, 0px)); }
 body { margin: 0; font: 15px/1.5 var(--font); }
 a { color: var(--brand-ink); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
@@ -68,7 +68,7 @@ html[data-fonts-pending] .fit, html[data-fonts-pending] .media__name, html[data-
 .brand__links { margin: 0; padding: 0; list-style: none; display: none; gap: 18px; font: 600 14px/1 var(--font); }
 .brand__links a { color: #fff; }
 @media (min-width: 640px) { .brand__links { display: flex; } }
-.cats { position: sticky; top: 0; z-index: 2; background: var(--card); border-bottom: 1px solid var(--line); }
+.cats { position: sticky; top: var(--study-banner-h, 0px); z-index: 2; background: var(--card); border-bottom: 1px solid var(--line); }
 .cats ul { width: min(100% - 24px, 1280px); margin: 0 auto; padding: 0; list-style: none; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
 .cats ul::-webkit-scrollbar { display: none; }
 .cats a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px; font: 700 16px/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; }
@@ -174,7 +174,7 @@ main { min-width: 0; }
 .order__body { padding: 0 16px 16px; max-height: 60svh; overflow: auto; display: grid; gap: 12px; }
 @media (max-width: 1099px) { .order:not(.is-open) .order__body { display: none; } }
 @media (min-width: 1100px) {
-  .order { position: sticky; top: 64px; bottom: auto; margin-top: 20px; border: 1px solid var(--line); border-top: 3px solid var(--brand); border-radius: var(--radius); box-shadow: none; }
+  .order { position: sticky; top: calc(64px + var(--study-banner-h, 0px)); bottom: auto; margin-top: 20px; border: 1px solid var(--line); border-top: 3px solid var(--brand); border-radius: var(--radius); box-shadow: none; }
   .order__toggle { cursor: default; pointer-events: none; }
   .order__body { max-height: none; }
 }
@@ -197,7 +197,7 @@ main { min-width: 0; }
 .credits { margin-top: 10px; } .credits summary { cursor: pointer; font-weight: 600; color: var(--ink); min-height: 24px; } .credits ul { margin: 6px 0 0; padding-left: 1.2em; columns: 2 300px; }
 
 /* The category strip is sticky at the top, so an open cell's head sticks beneath it, not under it. */
-.cell__head { top: 48px; }
+.cell__head { top: calc(48px + var(--study-banner-h, 0px)); }
 
 /* A type square's body is an ingredient list; it needs more room than a sentence. */
 @container (max-height: 300px) { .box--paper .box__body { display: none; } }

@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { studyMeta } from "./study.meta";
 
 // The Pages base path derives from the repository name so a fork never edits
 // this file. GitHub Actions sets GITHUB_REPOSITORY="owner/repo"; a user or
@@ -13,5 +14,5 @@ function pagesBase(): string {
 
 export default defineConfig({
   base: pagesBase(),
-  plugins: [react()],
+  plugins: [react(), studyMeta()],
 });

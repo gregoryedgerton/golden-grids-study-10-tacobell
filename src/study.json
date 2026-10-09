@@ -1,0 +1,56 @@
+{
+  "number": "10",
+  "name": "Taco Bell",
+  "notice": "A layout study, not Taco Bell: its online food menu rebuilt with Golden Grids by GIFcommit. Not affiliated with Taco Bell; the order totals but is never sent, and prices vary by location.",
+  "pages": {
+    "index": "Food menu"
+  },
+  "summary": "Taco Bell's online food menu, with its categories, its item pages and its box builder, rebuilt as one page of stacked golden grids in which a category is a ranking and an item's square opens into its customiser.",
+  "reviewed": {
+    "date": "October 8, 2026",
+    "method": "Read in a desktop browser, because the site refuses automated capture. Categories, items, prices, calories, add-ons and box contents were copied down from the pages as shown for the site's sample store; colours and type were measured in the same session.",
+    "pages": [
+      {
+        "label": "tacobell.com/food",
+        "url": "https://www.tacobell.com/food"
+      },
+      {
+        "label": "Boxes & Combos",
+        "url": "https://www.tacobell.com/food/boxes-and-combos"
+      },
+      {
+        "label": "An item page: Supreme Luxe Box",
+        "url": "https://www.tacobell.com/food/deals-and-combos/supreme-luxe-box"
+      }
+    ]
+  },
+  "real": [
+    "The menu's facts: categories, item names, prices, calories, what each item includes, the add-ons and their prices, and the boxes' components and swaps. Prices are one sample store's and vary by location.",
+    "The photographs show the actual menu items, taken by customers."
+  ],
+  "invented": [
+    "The descriptions and section copy, which are the study's own words.",
+    "The order. It adds up, with a sample tax rate, and is never sent; nothing can be bought here.",
+    "Items with no freely licensed photograph are shown as type. None of the chain's photography, marks or copy is used."
+  ],
+  "assets": [
+    {
+      "what": "Photographs",
+      "source": "Customers' photographs of the items, from Wikimedia Commons and Flickr, each credited below",
+      "licence": "CC BY, CC BY-SA or CC0, as stated for each"
+    },
+    {
+      "what": "Menu data",
+      "source": "tacobell.com, as read on the date above",
+      "url": "https://www.tacobell.com/food"
+    },
+    {
+      "what": "Typefaces",
+      "source": "Barlow, Barlow Condensed and Montserrat, standing in for the site's own faces",
+      "licence": "SIL Open Font License"
+    }
+  ],
+  "owner": "Taco Bell or Yum! Brands",
+  "repo": "https://github.com/gregoryedgerton/golden-grids-study-10-tacobell",
+  "updated": "October 9, 2026"
+}
