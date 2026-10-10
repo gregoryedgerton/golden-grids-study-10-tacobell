@@ -23,7 +23,7 @@ export function Customizer({ item, onAdded }: { item: Item; onAdded: () => void 
   const summary = summarise(item, removed, extras, choices);
   return (
     <div className="cust">
-      <p className="cust__desc">{item.long ?? item.desc}{item.url && <> <a href={item.url}>Item page on tacobell.com</a>.</>}</p>
+      <p className="cust__desc">{item.long ?? item.desc}</p>
       <div className="cust__cols">
         {item.options?.map((o) => (
           <Group key={o.id} legend={o.name}>
@@ -86,7 +86,7 @@ export function BoxView({ box, onAdded }: { box: Box; onAdded: () => void }) {
   const cal = items.reduce((s, i) => s + i.cal, 0) + drinkCal(box.drink, drink);
   return (
     <div className="cust">
-      <p className="cust__desc">{box.blurb} Bought apart these come to about {money(apart)} with a large drink. <a href={box.url}>Box page on tacobell.com</a>.</p>
+      <p className="cust__desc">{box.blurb} Bought apart these come to about {money(apart)} with a large drink.</p>
       <div className="cust__cols">
         {box.slots.map((s) => (
           <Group key={s.id} legend={`${s.name}: ${byId[s.itemId].name}`}>
@@ -113,7 +113,7 @@ export function BuildView({ onAdded }: { onAdded: () => void }) {
   const apart = BUILD.groups.reduce((s, g) => s + byId[picks[g.id]].price, 0) + 2.79;
   return (
     <div className="cust">
-      <p className="cust__desc">{BUILD.blurb} The site lists {BUILD.groups[0].items.length} specialties, {BUILD.groups[1].items.length} tacos and burritos and {BUILD.groups[2].items.length} sides to choose from. <a href={BUILD.url}>Builder on tacobell.com</a>.</p>
+      <p className="cust__desc">{BUILD.blurb} The site lists {BUILD.groups[0].items.length} specialties, {BUILD.groups[1].items.length} tacos and burritos and {BUILD.groups[2].items.length} sides to choose from.</p>
       <div className="cust__cols">
         {BUILD.groups.map((g) => (
           <Group key={g.id} legend={g.name}>

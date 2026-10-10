@@ -68,7 +68,7 @@ html[data-fonts-pending] .fit, html[data-fonts-pending] .media__name, html[data-
 .wordmark__mark { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: #fff; font: 700 20px/1 var(--display); }
 .brand__store { margin: 0 0 0 auto; font-size: 14px; }
 .brand__links { margin: 0; padding: 0; list-style: none; display: none; gap: 18px; font: 600 14px/1 var(--font); }
-.brand__links a { color: #fff; }
+.brand__links li[aria-current] { border-bottom: 2px solid #fff; padding-bottom: 3px; }
 @media (min-width: 640px) { .brand__links { display: flex; } }
 .cats { position: sticky; top: var(--study-banner-h, 0px); z-index: 2; background: var(--card); border-bottom: 1px solid var(--line); }
 .cats ul { width: min(100% - 24px, 1280px); margin: 0 auto; padding: 0; list-style: none; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }

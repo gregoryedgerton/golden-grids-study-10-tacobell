@@ -19,7 +19,7 @@ export function Page({ children }: { children: ReactNode }) {
         <div className="wrap brand__row">
           <a className="wordmark" href="./index.html"><span className="wordmark__mark" aria-hidden="true">G</span>GIFbell</a>
           <p className="brand__store">Pickup · Sample store · Prices as listed</p>
-          <ul className="brand__links"><li>Menu</li><li><a href={APP_URL}>App Store</a></li><li><a href={PLAY_URL}>Google Play</a></li></ul>
+          <ul className="brand__links"><li aria-current="page">Menu</li><li>Rewards</li><li>Locations</li><li>Sign in</li></ul>
         </div>
       </header>
       <CategoryStrip />
