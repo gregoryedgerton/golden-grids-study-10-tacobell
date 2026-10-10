@@ -1,6 +1,7 @@
 {
   "number": "10",
   "name": "Taco Bell",
+  "brand": "GIFbell",
   "notice": "A layout study, not Taco Bell: its online food menu rebuilt with Golden Grids as GIFbell, a parody name. Not affiliated with Taco Bell; the order totals but is never sent, and prices vary by location.",
   "pages": {
     "index": "Food menu"
