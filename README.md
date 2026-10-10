@@ -1,4 +1,4 @@
-# Layout study — Taco Bell's food menu, as GIFcommit
+# Layout study — Taco Bell's food menu, as GIFbell
 
 **Live:** [`https://gregoryedgerton.github.io/golden-grids-study-10-tacobell/`](https://gregoryedgerton.github.io/golden-grids-study-10-tacobell/)
 
@@ -7,7 +7,7 @@ An unaffiliated layout study. It rebuilds Taco Bell's online food menu —
 such as [Boxes & Combos](https://www.tacobell.com/food/boxes-and-combos),
 and its item pages such as the
 [Supreme Luxe Box](https://www.tacobell.com/food/deals-and-combos/supreme-luxe-box)
-— as stacked golden grids under the GIFcommit brand, with the menu's own
+— as stacked golden grids under the GIFbell brand, with the menu's own
 facts as read on October 8, 2026: the categories in the site's order, each
 item's name, price and calories, what it comes with, what can be added and
 for how much, the "Make it" switches, the boxes' components and swaps, and

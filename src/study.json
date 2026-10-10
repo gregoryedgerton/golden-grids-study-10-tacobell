@@ -1,7 +1,7 @@
 {
   "number": "10",
   "name": "Taco Bell",
-  "notice": "A layout study, not Taco Bell: its online food menu rebuilt with Golden Grids by GIFcommit. Not affiliated with Taco Bell; the order totals but is never sent, and prices vary by location.",
+  "notice": "A layout study, not Taco Bell: its online food menu rebuilt with Golden Grids as GIFbell, a parody name. Not affiliated with Taco Bell; the order totals but is never sent, and prices vary by location.",
   "pages": {
     "index": "Food menu"
   },
@@ -31,7 +31,8 @@
   "invented": [
     "The descriptions and section copy, which are the study's own words.",
     "The order. It adds up, with a sample tax rate, and is never sent; nothing can be bought here.",
-    "Items with no freely licensed photograph are shown as type. None of the chain's photography, marks or copy is used."
+    "Items with no freely licensed photograph are shown as type. None of the chain's photography, marks or copy is used.",
+    "The brand. GIFbell is a parody name made for this study; it is not a restaurant."
   ],
   "assets": [
     {

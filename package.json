@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Golden Grids layout study 10: a quick-service chain's interactive food menu as GIFcommit, a fictional taqueria \u2014 categories, customiser, combos, value menu and an order that totals but is never sent.",
+  "description": "Golden Grids layout study 10: a quick-service chain's interactive food menu as GIFbell, a fictional taqueria \u2014 categories, customiser, combos, value menu and an order that totals but is never sent.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

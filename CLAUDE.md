@@ -5,7 +5,7 @@ Guidance for agents working in a Golden Grids layout study.
 ## What this repo is
 
 Study 10: Taco Bell's online food menu (tacobell.com/food, its category
-pages and item pages) rebuilt as GIFcommit, with the menu's real facts as
+pages and item pages) rebuilt as GIFbell, with the menu's real facts as
 read on October 8, 2026. ONE page. `src/menu.ts` is the menu (categories,
 items with price, calories, what's included, add-ons, sauces, Make-it
 switches; boxes with components and swaps; Build Your Own groups);
@@ -169,7 +169,7 @@ README: the smallest line, and that no screen-reader user has tested it.
   item, with `exact: true` in `src/photos.json`. Reddit and other posts
   without a reuse licence are not used, however good. An item with no
   exact photograph is a type square, never a picture of something else.
-- The brand is GIFcommit, spelled exactly so, never transformed to upper
+- The brand is GIFbell, spelled exactly so, never transformed to upper
   or lower case by CSS.
 - The register is the site's, measured (`captures/tokens.md`): purple
   #501098, accent #9a23f8, black bar, white cards, 2px radii, uppercase
@@ -224,6 +224,18 @@ Two geometry rules, verified against source, that every band relies on:
   reviewed by people. (Greg, 2026-10-09.)
 - **Favicon**: `public/favicon.svg`, a 32-unit tile with 6-unit corners and one
   letter in the study's colours.
+
+## Brand
+
+- **The study's brand is a parody name**: `GIF` in capitals, then the tail of
+  the reference's name in lower case (GIFbnb, GIFspn, GIFflix, GIFrs, GIFx,
+  GIFbase, GIFmutual, GIFn'now, GIFbell, GIFipedia). Do not use GIFcommit as
+  a service's name; it is only the npm scope of the library.
+- **A play on the reference's premium tier or named service carries the
+  parody name and keeps the alteration**: GIFspn+, GIFbase One, GIFx Premium.
+- Write the name exactly so; never change its case in CSS. The notice in
+  `src/study.json` says it is a parody name, and the disclosure lists it
+  under what is invented. (Greg, 2026-10-09.)
 
 ## API facts, verified against 5.0.0 source
 
